@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новогодний органайзер 2025-2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Telegram Web App SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #5c0b0b 0%, #8b0000 30%, #b22222 70%, #dc143c 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        body:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M50,5 L60,35 L90,35 L65,55 L75,85 L50,65 L25,85 L35,55 L10,35 L40,35 Z" fill="%23ffffff" opacity="0.05"/></svg>');
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(to right, #ffde59, #ffcc33);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            padding: 0 20px;
+            letter-spacing: 0.5px;
+        }
+        
+        h1:before, h1:after {
+            content: '🎄';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+        }
+        
+        h1:before {
+            left: -15px;
+        }
+        
+        h1:after {
+            right: -15px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #ffde59;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .year-indicator {
+            display: inline-block;
+            background: rgba(255, 222, 89, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 222, 89, 0.3);
+        }
+        
+        .header-decoration {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 15px;
+        }
+        
+        .header-decoration i {
+            font-size: 1.8rem;
+            color: #ffde59;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.7; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: rgba(139, 0, 0, 0.85);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 222, 89, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #32cd32, #ffde59, #32cd32);
+        }
+        
+        .card h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: #ffde59;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 222, 89, 0.3);
+            font-weight: 600;
+        }
+        
+        .countdown {
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(139, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid rgba(255, 222, 89, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .countdown-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: #ffde59;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .countdown-box {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 10px;
+            background: rgba(178, 34, 34, 0.9);
+            padding: 15px 10px;
+            border-radius: 10px;
+            min-width: 85px;
+            border: 1px solid rgba(255, 222, 89, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .countdown-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .countdown-value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffde59;
+            text-shadow: 0 0 5px rgba(255, 222, 89, 0.5);
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            color: #ffccaa;
+            font-weight: 500;
+        }
+        
+        .todo-list {
+            list-style-type: none;
+        }
+        
+        .todo-item {
+            background: rgba(178, 34, 34, 0.7);
+            margin-bottom: 12px;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-left: 4px solid #32cd32;
+        }
+        
+        .todo-item:hover {
+            background: rgba(178, 34, 34, 0.9);
+            transform: translateX(5px);
+        }
+        
+        .todo-checkbox {
+            margin-right: 15px;
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            accent-color: #32cd32;
+        }
+        
+        .todo-text {
+            flex-grow: 1;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .todo-text.completed {
+            text-decoration: line-through;
+            opacity: 0.7;
+            color: #ccc;
+        }
+        
+        .add-todo {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .add-todo input {
+            font-family: 'Nunito', sans-serif;
+            flex-grow: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 10px 0 0 10px;
+            background: rgba(255, 255, 255, 0.95);
+            font-size: 1rem;
+            border: 2px solid transparent;
+            transition: border 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .add-todo input:focus {
+            outline: none;
+            border: 2px solid #32cd32;
+        }
+        
+        .add-todo input::placeholder {
+            color: #666;
+        }
+        
+        .add-todo button {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom, #32cd32, #228b22);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 10px 10px 0;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border-left: 2px solid rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.5px;
+        }
+        
+        .add-todo button:hover {
+            background: linear-gradient(to bottom, #3cb371, #2e8b57);
+            transform: scale(1.05);
+        }
+        
+        .tips-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+            padding: 12px 12px 12px 45px;
+            background: rgba(178, 34, 34, 0.6);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .tips-list li:hover {
+            background: rgba(178, 34, 34, 0.8);
+            transform: translateX(5px);
+        }
+        
+        .tips-list li:before {
+            content: "🎁";
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.4rem;
+        }
+        
+        .progress-section {
+            margin-top: 20px;
+            background: rgba(178, 34, 34, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .progress-bar {
+            height: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 222, 89, 0.3);
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #32cd32, #ffde59);
+            width: 0%;
+            transition: width 1s ease;
+            box-shadow: 0 0 10px rgba(50, 205, 50, 0.5);
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: #ffccaa;
+            font-weight: 600;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.95rem;
+            color: #ffccaa;
+            border-top: 1px solid rgba(255, 222, 89, 0.3);
+            background: rgba(139, 0, 0, 0.8);
+            border-radius: 10px;
+            line-height: 1.8;
+        }
+        
+        .footer-info {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            font-size: 1rem;
+            opacity: 0.9;
+            z-index: 0;
+            animation: fall linear forwards;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        
+        .motivation {
+            font-style: italic;
+            text-align: center;
+            margin-top: 15px;
+            color: #ffde59;
+            font-size: 1.2rem;
+            padding: 12px;
+            background: rgba(178, 34, 34, 0.7);
+            border-radius: 10px;
+            border-left: 4px solid #32cd32;
+            border-right: 4px solid #32cd32;
+            font-weight: 500;
+        }
+        
+        .delete-btn {
+            background: rgba(220, 20, 60, 0.7);
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .delete-btn:hover {
+            background: rgba(220, 20, 60, 1);
+            transform: scale(1.1);
+        }
+        
+        .holly-berry {
+            position: absolute;
+            color: #32cd32;
+            font-size: 1.5rem;
+            z-index: 0;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .holly-berry:after {
+            content: '⛄';
+            position: absolute;
+            font-size: 1rem;
+            top: -5px;
+            right: -5px;
+        }
+        
+        .new-year-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #32cd32, #ffde59);
+            color: #8b0000;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+            animation: pulse 2s infinite;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .year-transition {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .year-from, .year-to {
+            background: rgba(255, 222, 89, 0.2);
+            padding: 5px 15px;
+            border-radius: 8px;
+            margin: 0 10px;
+        }
+        
+        .year-arrow {
+            font-size: 1.5rem;
+            color: #ffde59;
+        }
+        
+        /* Стили для пуш-уведомлений */
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            max-width: 350px;
+            pointer-events: none;
+        }
+        
+        .notification {
+            background: linear-gradient(135deg, #8b0000, #b22222);
+            color: white;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #ffde59;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: translateX(400px);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            pointer-events: auto;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .notification-icon {
+            font-size: 1.8rem;
+            color: #ffde59;
+        }
+        
+        .notification-content {
+            flex-grow: 1;
+        }
+        
+        .notification-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #ffde59;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .notification-message {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            color: #ffde59;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Стили для новогодней анимации */
+        .new-year-celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .new-year-celebration.active {
+            display: flex;
+            animation: fadeIn 1s ease;
+        }
+        
+        .celebration-content {
+            position: relative;
+            z-index: 2001;
+            background: rgba(139, 0, 0, 0.85);
+            padding: 40px;
+            border-radius: 20px;
+            border: 3px solid rgba(255, 222, 89, 0.4);
+            box-shadow: 0 0 50px rgba(255, 222, 89, 0.3);
+            max-width: 90%;
+            backdrop-filter: blur(5px);
+        }
+        
+        .celebration-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            color: #ffde59;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 222, 89, 0.8);
+            animation: glow 2s infinite alternate;
+        }
+        
+        @media (max-width: 768px) {
+            .celebration-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .celebration-subtitle {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 30px;
+            max-width: 800px;
+            line-height: 1.5;
+        }
+        
+        /* Конфетти */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2000;
+            overflow: hidden;
+        }
+        
+        .celebration-confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            animation: confettiFall 5s linear forwards;
+            pointer-events: none;
+        }
+        
+        .celebration-confetti.square {
+            border-radius: 3px;
+        }
+        
+        .celebration-confetti.triangle {
+            width: 0;
+            height: 0;
+            background: none;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 16px solid;
+        }
+        
+        .celebration-confetti.star {
+            background: none;
+            font-size: 20px;
+            width: auto;
+            height: auto;
+        }
+        
+        .celebration-confetti.star:after {
+            content: '★';
+        }
+        
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes confettiFallLeft {
+            0% {
+                transform: translateY(-100px) rotate(0deg) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg) translateX(-100px);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes confettiFallRight {
+            0% {
+                transform: translateY(-100px) rotate(0deg) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(255, 222, 89, 0.8); }
+            100% { text-shadow: 0 0 30px rgba(255, 222, 89, 1), 0 0 40px rgba(255, 222, 89, 0.8); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to bottom, #32cd32, #228b22);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(to bottom, #3cb371, #2e8b57);
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 222, 89, 0.2);
+            color: #ffde59;
+            border: 1px solid rgba(255, 222, 89, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 222, 89, 0.3);
+            transform: scale(1.05);
+        }
+        
+        /* Форма для ввода имени */
+        .name-form {
+            margin: 20px auto;
+            max-width: 500px;
+            background: rgba(139, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 222, 89, 0.3);
+        }
+        
+        .name-form h3 {
+            color: #ffde59;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+        }
+        
+        .name-input-container {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .name-input-container input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.95);
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .name-input-container button {
+            background: linear-gradient(to bottom, #32cd32, #228b22);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .current-user {
+            text-align: center;
+            margin-top: 10px;
+            color: #ffde59;
+            font-weight: 600;
+        }
+        
+        /* ========== Telegram Web App Стили ========== */
+        .telegram-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .telegram-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .telegram-btn-primary {
+            background: linear-gradient(to bottom, #2481cc, #1d6fb6);
+            color: white;
+        }
+
+        .telegram-btn-primary:hover {
+            background: linear-gradient(to bottom, #2d91dc, #2481cc);
+            transform: scale(1.05);
+        }
+
+        .telegram-btn-secondary {
+            background: rgba(36, 129, 204, 0.2);
+            color: #2481cc;
+            border: 1px solid rgba(36, 129, 204, 0.3);
+        }
+
+        .telegram-btn-secondary:hover {
+            background: rgba(36, 129, 204, 0.3);
+            transform: scale(1.05);
+        }
+
+        .telegram-info {
+            background: rgba(36, 129, 204, 0.1);
+            border: 1px solid rgba(36, 129, 204, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            display: none;
+        }
+
+        .telegram-user-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .telegram-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2481cc, #32cd32);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Скрываем элементы, которые не нужны в Telegram */
+        .telegram-hidden {
+            display: none !important;
+        }
+
+        /* Адаптация для Telegram Web App */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Контейнер для уведомлений -->
+    <div class="notification-container" id="notification-container"></div>
+    
+    <!-- Новогодняя анимация -->
+    <div class="new-year-celebration" id="new-year-celebration">
+        <div class="confetti-container" id="confetti-container"></div>
+        <div class="celebration-content">
+            <h1 class="celebration-title">С НОВЫМ 2026 ГОДОМ! 🎉</h1>
+            <p class="celebration-subtitle" id="celebration-message">Пусть новый год принесет счастье, здоровье и исполнение всех желаний!</p>
+            <div class="controls">
+                <button class="btn btn-primary" id="celebration-close">Продолжить праздновать</button>
+                <button class="btn btn-secondary" id="celebration-share">Поделиться радостью</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Основное приложение -->
+    <div class="container">
+        <div class="new-year-badge">
+            <i class="fas fa-star"></i> 2025 → 2026 <i class="fas fa-star"></i>
+        </div>
+        
+        <header>
+            <h1><i class="fas fa-gift"></i> Новогодний органайзер</h1>
+            <p class="subtitle" id="subtitle">Встретьте 2026 год во всеоружии!</p>
+            <div class="year-transition">
+                <div class="year-from">2025</div>
+                <div class="year-arrow">→</div>
+                <div class="year-to">2026</div>
+            </div>
+            <div class="header-decoration">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-tree"></i>
+                <i class="fas fa-snowflake"></i>
+                <i class="fas fa-candy-cane"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            
+            <!-- Telegram информация -->
+            <div class="telegram-info" id="telegram-info">
+                <p>🌐 <strong>Открыто в Telegram Web App</strong></p>
+                <p>Ваши данные сохраняются в браузере Telegram</p>
+                <div class="telegram-user-info" id="telegram-user-info">
+                    <!-- Информация о пользователе будет здесь -->
+                </div>
+            </div>
+
+            <div class="telegram-controls">
+                <button class="telegram-btn telegram-btn-primary" id="tg-share-btn">
+                    <i class="fas fa-share-alt"></i> Поделиться
+                </button>
+                <button class="telegram-btn telegram-btn-secondary" id="tg-close-btn">
+                    <i class="fas fa-times"></i> Закрыть
+                </button>
+                <button class="telegram-btn telegram-btn-secondary" id="tg-back-btn">
+                    <i class="fas fa-arrow-left"></i> Назад
+                </button>
+            </div>
+            
+            <!-- Форма для ввода имени -->
+            <div class="name-form">
+                <h3>Введите ваше имя для персонализированных поздравлений</h3>
+                <div class="name-input-container">
+                    <input type="text" id="user-name-input" placeholder="Ваше имя" maxlength="20">
+                    <button id="save-name-btn">Сохранить</button>
+                </div>
+                <div class="current-user" id="current-user">
+                    <!-- Имя пользователя будет отображаться здесь -->
+                </div>
+            </div>
+            
+            <div class="controls telegram-hidden">
+                <button class="btn btn-secondary" id="test-notification">Тест уведомления</button>
+                <button class="btn btn-secondary" id="test-celebration">Тест праздника</button>
+            </div>
+        </header>
+        
+        <div class="countdown">
+            <h2 class="countdown-title">До 2026 года осталось:</h2>
+            <div id="countdown-timer">
+                <div class="countdown-box">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">дней</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">часов</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">минут</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">секунд</div>
+                </div>
+            </div>
+            <div class="motivation" id="motivation-text">Время летит — пора готовиться к празднику!</div>
+        </div>
+        
+        <div class="content">
+            <div class="card">
+                <h2><i class="fas fa-list-check"></i> Список дел</h2>
+                <ul class="todo-list" id="todo-list">
+                    <!-- Список дел будет загружен из JavaScript -->
+                </ul>
+                
+                <div class="add-todo">
+                    <input type="text" id="new-todo" placeholder="Добавить новое задание...">
+                    <button id="add-todo-btn">Добавить</button>
+                </div>
+                
+                <div class="progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>Прогресс подготовки:</span>
+                        <span id="progress-percent">0%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-lightbulb"></i> Советы по подготовке</h2>
+                <ul class="tips-list">
+                    <li>Составьте список гостей и меню праздничного стола заранее.</li>
+                    <li>Купите подарки заранее, чтобы избежать ажиотажа в последние дни.</li>
+                    <li>Украсьте дом гирляндами, шарами и мишурой для создания праздничной атмосферы.</li>
+                    <li>Приготовьте несколько праздничных нарядов на выбор для встречи Нового года.</li>
+                    <li>Составьте плейлист с любимой новогодней музыкой.</li>
+                    <li>Не забудьте купить мандарины, шампанское и другие традиционные угощения.</li>
+                    <li>Подготовьте поздравления для близких и коллег.</li>
+                    <li>Проверьте гирлянды и другие электрические украшения на исправность.</li>
+                    <li>Запланируйте развлечения и игры для гостей или семьи.</li>
+                    <li>Не оставляйте всё на последний день —
