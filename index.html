@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Новогодний органайзер 2025-2026</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- Telegram Web App SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -434,23 +434,6 @@
             transform: scale(1.1);
         }
         
-        .holly-berry {
-            position: absolute;
-            color: #32cd32;
-            font-size: 1.5rem;
-            z-index: 0;
-            opacity: 0.7;
-            pointer-events: none;
-        }
-        
-        .holly-berry:after {
-            content: '⛄';
-            position: absolute;
-            font-size: 1rem;
-            top: -5px;
-            right: -5px;
-        }
-        
         .new-year-badge {
             position: absolute;
             top: 20px;
@@ -795,71 +778,28 @@
             font-weight: 600;
         }
         
-        /* ========== Telegram Web App Стили ========== */
-        .telegram-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .telegram-btn {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .telegram-btn-primary {
-            background: linear-gradient(to bottom, #2481cc, #1d6fb6);
-            color: white;
-        }
-
-        .telegram-btn-primary:hover {
-            background: linear-gradient(to bottom, #2d91dc, #2481cc);
-            transform: scale(1.05);
-        }
-
-        .telegram-btn-secondary {
-            background: rgba(36, 129, 204, 0.2);
-            color: #2481cc;
-            border: 1px solid rgba(36, 129, 204, 0.3);
-        }
-
-        .telegram-btn-secondary:hover {
-            background: rgba(36, 129, 204, 0.3);
-            transform: scale(1.05);
-        }
-
-        .telegram-info {
+        /* Telegram Web App стили */
+        .telegram-user-card {
             background: rgba(36, 129, 204, 0.1);
             border: 1px solid rgba(36, 129, 204, 0.3);
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 15px;
-            margin: 15px 0;
+            margin: 20px auto;
+            max-width: 500px;
             text-align: center;
-            display: none;
         }
-
+        
         .telegram-user-info {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
             margin-top: 10px;
         }
-
+        
         .telegram-avatar {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: linear-gradient(135deg, #2481cc, #32cd32);
             display: flex;
@@ -867,26 +807,70 @@
             justify-content: center;
             color: white;
             font-weight: bold;
+            font-size: 1.4rem;
+        }
+        
+        .telegram-name {
             font-size: 1.2rem;
+            font-weight: 600;
+            color: #2481cc;
         }
-
-        /* Скрываем элементы, которые не нужны в Telegram */
-        .telegram-hidden {
-            display: none !important;
+        
+        .telegram-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
         }
-
-        /* Адаптация для Telegram Web App */
+        
+        .tg-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tg-btn-primary {
+            background: linear-gradient(to bottom, #2481cc, #1d6fb6);
+            color: white;
+        }
+        
+        .tg-btn-secondary {
+            background: rgba(36, 129, 204, 0.2);
+            color: #2481cc;
+            border: 1px solid rgba(36, 129, 204, 0.3);
+        }
+        
+        .telegram-message {
+            color: #2481cc;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        
+        .hide-in-telegram {
+            display: none;
+        }
+        
         @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .card {
-                padding: 15px;
-            }
-            
             h1 {
                 font-size: 2.2rem;
+            }
+            
+            .countdown-value {
+                font-size: 2rem;
+            }
+            
+            .countdown-box {
+                min-width: 70px;
+                margin: 0 5px;
             }
         }
     </style>
@@ -930,29 +914,28 @@
                 <i class="fas fa-star"></i>
             </div>
             
-            <!-- Telegram информация -->
-            <div class="telegram-info" id="telegram-info">
-                <p>🌐 <strong>Открыто в Telegram Web App</strong></p>
-                <p>Ваши данные сохраняются в браузере Telegram</p>
-                <div class="telegram-user-info" id="telegram-user-info">
-                    <!-- Информация о пользователе будет здесь -->
+            <!-- Telegram User Info (будет показано только в Telegram) -->
+            <div class="telegram-user-card" id="telegram-user-card" style="display: none;">
+                <p class="telegram-message">👋 Привет из Telegram!</p>
+                <div class="telegram-user-info">
+                    <div class="telegram-avatar" id="telegram-avatar">T</div>
+                    <div>
+                        <div class="telegram-name" id="telegram-name">Пользователь Telegram</div>
+                        <div style="font-size: 0.9rem; color: #ffccaa;">Добро пожаловать!</div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="telegram-controls">
-                <button class="telegram-btn telegram-btn-primary" id="tg-share-btn">
-                    <i class="fas fa-share-alt"></i> Поделиться
-                </button>
-                <button class="telegram-btn telegram-btn-secondary" id="tg-close-btn">
-                    <i class="fas fa-times"></i> Закрыть
-                </button>
-                <button class="telegram-btn telegram-btn-secondary" id="tg-back-btn">
-                    <i class="fas fa-arrow-left"></i> Назад
-                </button>
+                <div class="telegram-controls">
+                    <button class="tg-btn tg-btn-primary" id="tg-share-btn">
+                        <i class="fas fa-share-alt"></i> Поделиться
+                    </button>
+                    <button class="tg-btn tg-btn-secondary" id="tg-back-btn">
+                        <i class="fas fa-arrow-left"></i> Назад
+                    </button>
+                </div>
             </div>
             
             <!-- Форма для ввода имени -->
-            <div class="name-form">
+            <div class="name-form" id="name-form">
                 <h3>Введите ваше имя для персонализированных поздравлений</h3>
                 <div class="name-input-container">
                     <input type="text" id="user-name-input" placeholder="Ваше имя" maxlength="20">
@@ -963,7 +946,7 @@
                 </div>
             </div>
             
-            <div class="controls telegram-hidden">
+            <div class="controls">
                 <button class="btn btn-secondary" id="test-notification">Тест уведомления</button>
                 <button class="btn btn-secondary" id="test-celebration">Тест праздника</button>
             </div>
@@ -1027,4 +1010,676 @@
                     <li>Подготовьте поздравления для близких и коллег.</li>
                     <li>Проверьте гирлянды и другие электрические украшения на исправность.</li>
                     <li>Запланируйте развлечения и игры для гостей или семьи.</li>
-                    <li>Не оставляйте всё на последний день —
+                    <li>Не оставляйте всё на последний день — распределите дела равномерно.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Создано с ❤️ и праздничным настроением! 2025 Дмитрий Шаповал</p>
+            <p class="footer-info">Все задачи сохраняются в вашем браузере</p>
+            <p class="footer-info" id="platform-info">Открыто в браузере</p>
+        </footer>
+    </div>
+
+    <script>
+        // ========== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ==========
+        let todos = [];
+        let confettiInterval = null;
+        let notificationInterval = null;
+        let userName = localStorage.getItem('newYearUserName') || '';
+        let isTelegram = false;
+        let tg = null;
+
+        // ========== TELEGRAM WEB APP ИНИЦИАЛИЗАЦИЯ ==========
+        function initTelegram() {
+            if (typeof window.Telegram !== 'undefined' && window.Telegram.WebApp) {
+                isTelegram = true;
+                tg = window.Telegram.WebApp;
+                
+                // Настраиваем Telegram Web App
+                tg.expand(); // Развернуть на весь экран
+                tg.setHeaderColor('#8B0000');
+                tg.setBackgroundColor('#5c0b0b');
+                
+                // Получаем информацию о пользователе
+                const user = tg.initDataUnsafe?.user;
+                if (user) {
+                    const firstName = user.first_name || '';
+                    const lastName = user.last_name || '';
+                    const username = user.username || '';
+                    
+                    let displayName = firstName;
+                    if (lastName) displayName += ' ' + lastName;
+                    if (!displayName && username) displayName = '@' + username;
+                    if (!displayName) displayName = 'Друг';
+                    
+                    // Используем имя из Telegram
+                    userName = firstName || displayName;
+                    localStorage.setItem('newYearUserName', userName);
+                    
+                    // Показываем информацию о пользователе Telegram
+                    const telegramCard = document.getElementById('telegram-user-card');
+                    const telegramAvatar = document.getElementById('telegram-avatar');
+                    const telegramName = document.getElementById('telegram-name');
+                    
+                    telegramAvatar.textContent = displayName.charAt(0).toUpperCase();
+                    telegramName.textContent = displayName;
+                    telegramCard.style.display = 'block';
+                    
+                    // Обновляем отображение имени
+                    updateUserNameDisplay();
+                    
+                    // Скрываем форму имени (используем Telegram имя)
+                    document.getElementById('name-form').style.display = 'none';
+                    
+                    // Показываем приветственное уведомление
+                    setTimeout(() => {
+                        showCustomNotification({
+                            icon: "👋",
+                            title: "Добро пожаловать!",
+                            message: `${displayName}, готовьтесь к самому волшебному празднику в 2026 году!`
+                        });
+                    }, 1000);
+                }
+                
+                // Обработчики для кнопок Telegram
+                document.getElementById('tg-share-btn').addEventListener('click', shareToTelegram);
+                document.getElementById('tg-back-btn').addEventListener('click', () => {
+                    if (tg && tg.BackButton) {
+                        tg.BackButton.show();
+                        tg.BackButton.onClick(() => {
+                            tg.close();
+                        });
+                    }
+                });
+                
+                // Обновляем информацию о платформе
+                document.getElementById('platform-info').textContent = 'Открыто в Telegram Web App';
+                
+                console.log('Telegram Web App инициализирован');
+            } else {
+                console.log('Не в Telegram Web App');
+                document.getElementById('platform-info').textContent = 'Открыто в браузере';
+            }
+        }
+
+        // ========== УВЕДОМЛЕНИЯ ==========
+        const notifications = [
+            {
+                icon: "⭐",
+                title: "Звезда удачи!",
+                message: "Пусть в новом году вам всегда светит звезда удачи, а каждый день будет полон позитива!"
+            },
+            {
+                icon: "🎄",
+                title: "Новогоднее настроение!",
+                message: "Пусть в вашем доме всегда будет тепло и уютно, а новогодняя ёлка дарит радость!"
+            },
+            {
+                icon: "🎁",
+                title: "Подарки и сюрпризы!",
+                message: "Пусть под ёлкой вас ждут самые желанные подарки, а новый год принесет много приятных сюрпризов!"
+            },
+            {
+                icon: "❤️",
+                title: "Любовь и гармония!",
+                message: "Пусть новый год наполнит вашу жизнь любовью, гармонией и взаимопониманием с близкими!"
+            },
+            {
+                icon: "💰",
+                title: "Финансовое благополучие!",
+                message: "Пусть 2026 год принесет финансовую стабильность, успех в делах и процветание!"
+            },
+            {
+                icon: "🏡",
+                title: "Уютный дом!",
+                message: "Пусть ваш дом будет полон смеха, радости и тепла в новом году!"
+            },
+            {
+                icon: "🚀",
+                title: "Новые горизонты!",
+                message: "Пусть новый год откроет перед вами новые возможности и горизонты для развития!"
+            },
+            {
+                icon: "🌈",
+                title: "Ярких красок в жизни!",
+                message: "Пусть жизнь в 2026 году будет яркой, красочной и наполненной счастливыми моментами!"
+            },
+            {
+                icon: "🍀",
+                title: "Удачи во всем!",
+                message: "Пусть удача сопровождает вас во всех начинаниях и помогает преодолевать любые трудности!"
+            },
+            {
+                icon: "👨‍👩‍👧‍👦",
+                title: "Семейное счастье!",
+                message: "Пусть ваша семья будет крепкой, дружной и счастливой в новом году!"
+            },
+            {
+                icon: "🌠",
+                title: "Исполнение желаний!",
+                message: "Загадайте желание под бой курантов — пусть оно обязательно сбудется в 2026 году!"
+            },
+            {
+                icon: "🎉",
+                title: "Праздничное настроение!",
+                message: "Не забывайте радоваться мелочам и наслаждаться каждым моментом праздника!"
+            }
+        ];
+
+        // Показать уведомление
+        function showNotification() {
+            const notification = notifications[Math.floor(Math.random() * notifications.length)];
+            let personalizedMessage = notification.message;
+            
+            // Добавляем имя пользователя, если оно есть
+            if (userName) {
+                personalizedMessage = `${userName}, ${personalizedMessage.toLowerCase()}`;
+            }
+            
+            const notificationContainer = document.getElementById('notification-container');
+            const notificationId = 'notification-' + Date.now();
+            
+            const notificationElement = document.createElement('div');
+            notificationElement.className = 'notification';
+            notificationElement.id = notificationId;
+            notificationElement.innerHTML = `
+                <div class="notification-icon">${notification.icon}</div>
+                <div class="notification-content">
+                    <div class="notification-title">${notification.title}</div>
+                    <div class="notification-message">${personalizedMessage}</div>
+                </div>
+                <button class="notification-close" onclick="closeNotification('${notificationId}')">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            notificationContainer.appendChild(notificationElement);
+            
+            setTimeout(() => {
+                notificationElement.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                closeNotification(notificationId);
+            }, 7000);
+        }
+
+        // Закрыть уведомление
+        function closeNotification(id) {
+            const notification = document.getElementById(id);
+            if (notification) {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 500);
+            }
+        }
+
+        // Запустить систему уведомлений
+        function startNotificationSystem() {
+            if (notificationInterval) {
+                clearInterval(notificationInterval);
+            }
+            
+            // Первое уведомление через 10 секунд
+            setTimeout(() => {
+                showNotification();
+            }, 10000);
+            
+            // Затем каждые 45 секунд
+            notificationInterval = setInterval(() => {
+                showNotification();
+            }, 45000);
+        }
+
+        // Показать кастомное уведомление
+        function showCustomNotification(notification) {
+            const notificationContainer = document.getElementById('notification-container');
+            const notificationId = 'notification-' + Date.now();
+            
+            const notificationElement = document.createElement('div');
+            notificationElement.className = 'notification';
+            notificationElement.id = notificationId;
+            notificationElement.innerHTML = `
+                <div class="notification-icon">${notification.icon}</div>
+                <div class="notification-content">
+                    <div class="notification-title">${notification.title}</div>
+                    <div class="notification-message">${notification.message}</div>
+                </div>
+                <button class="notification-close" onclick="closeNotification('${notificationId}')">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            notificationContainer.appendChild(notificationElement);
+            
+            setTimeout(() => {
+                notificationElement.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                closeNotification(notificationId);
+            }, 7000);
+        }
+
+        // ========== ИМЯ ПОЛЬЗОВАТЕЛЯ ==========
+        function saveUserName() {
+            const nameInput = document.getElementById('user-name-input');
+            const name = nameInput.value.trim();
+            
+            if (name) {
+                userName = name;
+                localStorage.setItem('newYearUserName', userName);
+                updateUserNameDisplay();
+                nameInput.value = '';
+                
+                // Показать приветственное уведомление
+                const welcomeNotification = {
+                    icon: "👋",
+                    title: "Добро пожаловать!",
+                    message: `${userName}, мы рады видеть вас! Готовьтесь к самому волшебному празднику!`
+                };
+                
+                showCustomNotification(welcomeNotification);
+            }
+        }
+
+        function updateUserNameDisplay() {
+            const currentUserElement = document.getElementById('current-user');
+            if (userName) {
+                currentUserElement.textContent = `Вы вошли как: ${userName}`;
+                currentUserElement.style.display = 'block';
+            } else {
+                currentUserElement.style.display = 'none';
+            }
+        }
+
+        // ========== СПИСОК ДЕЛ ==========
+        function initializeTodos() {
+            const savedTodos = localStorage.getItem('newYearTodos2026');
+            todos = savedTodos ? JSON.parse(savedTodos) : [
+                { id: 1, text: "Купить подарки близким", completed: false },
+                { id: 2, text: "Украсить новогоднюю ёлку", completed: false },
+                { id: 3, text: "Составить праздничное меню", completed: false },
+                { id: 4, text: "Приготовить новогодний торт", completed: false },
+                { id: 5, text: "Написать поздравительные открытки", completed: false },
+                { id: 6, text: "Купить продукты для праздничного стола", completed: false },
+                { id: 7, text: "Подготовить новогодние костюмы", completed: false }
+            ];
+            
+            saveTodos();
+            renderTodos();
+        }
+
+        function saveTodos() {
+            localStorage.setItem('newYearTodos2026', JSON.stringify(todos));
+            updateProgress();
+        }
+
+        function renderTodos() {
+            const todoList = document.getElementById('todo-list');
+            todoList.innerHTML = '';
+            
+            todos.forEach(todo => {
+                const li = document.createElement('li');
+                li.className = 'todo-item';
+                li.innerHTML = `
+                    <input type="checkbox" class="todo-checkbox" ${todo.completed ? 'checked' : ''} data-id="${todo.id}">
+                    <span class="todo-text ${todo.completed ? 'completed' : ''}">${todo.text}</span>
+                    <button class="delete-btn" data-id="${todo.id}" title="Удалить задачу">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                todoList.appendChild(li);
+            });
+            
+            // Обработчики событий
+            document.querySelectorAll('.todo-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    toggleTodo(id);
+                });
+            });
+            
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    deleteTodo(id);
+                });
+            });
+            
+            updateProgress();
+        }
+
+        function toggleTodo(id) {
+            todos = todos.map(todo => {
+                if (todo.id === id) {
+                    return { ...todo, completed: !todo.completed };
+                }
+                return todo;
+            });
+            
+            saveTodos();
+            renderTodos();
+        }
+
+        function deleteTodo(id) {
+            todos = todos.filter(todo => todo.id !== id);
+            saveTodos();
+            renderTodos();
+        }
+
+        function addTodo() {
+            const newTodoInput = document.getElementById('new-todo');
+            const text = newTodoInput.value.trim();
+            
+            if (text) {
+                const newTodo = {
+                    id: todos.length > 0 ? Math.max(...todos.map(t => t.id)) + 1 : 1,
+                    text: text,
+                    completed: false
+                };
+                
+                todos.push(newTodo);
+                saveTodos();
+                renderTodos();
+                newTodoInput.value = '';
+            }
+        }
+
+        function updateProgress() {
+            const completedTodos = todos.filter(todo => todo.completed).length;
+            const totalTodos = todos.length;
+            const percent = totalTodos > 0 ? Math.round((completedTodos / totalTodos) * 100) : 0;
+            
+            document.getElementById('progress-percent').textContent = `${percent}%`;
+            const progressFill = document.getElementById('progress-fill');
+            progressFill.style.width = `${percent}%`;
+            
+            if (percent < 30) {
+                progressFill.style.background = 'linear-gradient(90deg, #ff4d4d, #ff9999)';
+            } else if (percent < 70) {
+                progressFill.style.background = 'linear-gradient(90deg, #ffcc00, #ffde59)';
+            } else {
+                progressFill.style.background = 'linear-gradient(90deg, #32cd32, #90ee90)';
+            }
+        }
+
+        // ========== ОТСЧЕТ ВРЕМЕНИ ==========
+        function updateCountdown() {
+            const now = new Date();
+            const newYearDate = new Date('January 1, 2026 00:00:00');
+            
+            if (now >= newYearDate) {
+                document.querySelector('.countdown-title').textContent = "2026 год уже наступил!";
+                document.getElementById('days').textContent = "00";
+                document.getElementById('hours').textContent = "00";
+                document.getElementById('minutes').textContent = "00";
+                document.getElementById('seconds').textContent = "00";
+                document.getElementById('motivation-text').textContent = "С Новым 2026 годом! 🎉";
+                document.getElementById('subtitle').textContent = "С Новым 2026 годом! 🎉";
+                return;
+            }
+            
+            const timeDiff = newYearDate - now;
+            
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            updateMotivation(days);
+        }
+
+        function updateMotivation(days) {
+            const motivationText = document.getElementById('motivation-text');
+            let text = "";
+            
+            if (days > 30) {
+                text = "Еще много времени, но лучше начать подготовку к 2026 году заранее!";
+            } else if (days > 14) {
+                text = "Две недели до праздника — самое время активной подготовки!";
+            } else if (days > 7) {
+                text = "Осталась неделя — время действовать!";
+            } else if (days > 3) {
+                text = "Считанные дни остались — вы всё успеете!";
+            } else if (days > 1) {
+                text = "Последние штрихи — праздник уже на носу!";
+            } else if (days === 1) {
+                text = "Завтра 2026 год! Завершайте последние приготовления!";
+            } else {
+                text = "С Новым 2026 годом! 🎉 Пусть все ваши планы исполнятся!";
+            }
+            
+            motivationText.textContent = text;
+        }
+
+        // ========== АНИМАЦИЯ СНЕЖИНОК ==========
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.innerHTML = '❄';
+            snowflake.classList.add('snowflake');
+            
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            const size = Math.random() * 15 + 10;
+            snowflake.style.fontSize = size + 'px';
+            const duration = Math.random() * 5 + 5;
+            snowflake.style.animationDuration = duration + 's';
+            snowflake.style.animationDelay = Math.random() * 5 + 's';
+            snowflake.style.opacity = Math.random() * 0.5 + 0.5;
+            
+            document.body.appendChild(snowflake);
+            
+            setTimeout(() => {
+                if (snowflake.parentNode) {
+                    snowflake.parentNode.removeChild(snowflake);
+                }
+            }, duration * 1000);
+        }
+
+        function initSnowflakes() {
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => createSnowflake(), i * 200);
+            }
+            
+            setInterval(createSnowflake, 400);
+        }
+
+        // ========== НОВОГОДНЯЯ АНИМАЦИЯ ==========
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            if (!container) return;
+            
+            const colors = ['#ffde59', '#32cd32', '#ff4d4d', '#ffcc00', '#ffffff', '#ff6b6b', '#4ecdc4'];
+            const confettiTypes = ['circle', 'square', 'triangle', 'star'];
+            
+            for (let i = 0; i < 80; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'celebration-confetti';
+                
+                const type = confettiTypes[Math.floor(Math.random() * confettiTypes.length)];
+                if (type !== 'circle') {
+                    confetti.classList.add(type);
+                }
+                
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                if (type === 'triangle') {
+                    confetti.style.borderBottom = `16px solid ${color}`;
+                } else if (type === 'star') {
+                    confetti.style.color = color;
+                } else {
+                    confetti.style.backgroundColor = color;
+                }
+                
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.width = (Math.random() * 20 + 8) + 'px';
+                confetti.style.height = confetti.style.width;
+                
+                const animations = ['confettiFall', 'confettiFallLeft', 'confettiFallRight'];
+                const animation = animations[Math.floor(Math.random() * animations.length)];
+                confetti.style.animationName = animation;
+                confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                confetti.style.animationDelay = (Math.random() * 2) + 's';
+                
+                container.appendChild(confetti);
+                
+                setTimeout(() => {
+                    if (confetti.parentNode) {
+                        confetti.parentNode.removeChild(confetti);
+                    }
+                }, 8000);
+            }
+        }
+
+        function startNewYearCelebration() {
+            const celebration = document.getElementById('new-year-celebration');
+            celebration.classList.add('active');
+            
+            const container = document.getElementById('confetti-container');
+            if (container) {
+                container.innerHTML = '';
+            }
+            
+            createConfetti();
+            confettiInterval = setInterval(createConfetti, 2500);
+            
+            const messages = [
+                "С Новым 2026 годом! Пусть этот год будет наполнен радостью, счастьем и благополучием!",
+                "Поздравляем с наступлением 2026 года! Желаем здоровья, любви и исполнения всех желаний!",
+                "2026 год пришел! Пусть он принесет мир, гармонию и успех во всех начинаниях!",
+                "С Новым годом! Пусть каждый день будет особенным, а каждое мгновение — счастливым!"
+            ];
+            
+            const message = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('celebration-message').textContent = message;
+        }
+
+        function stopNewYearCelebration() {
+            const celebration = document.getElementById('new-year-celebration');
+            celebration.classList.remove('active');
+            
+            if (confettiInterval) {
+                clearInterval(confettiInterval);
+                confettiInterval = null;
+            }
+            
+            const container = document.getElementById('confetti-container');
+            if (container) {
+                container.innerHTML = '';
+            }
+        }
+
+        // ========== TELEGRAM ФУНКЦИИ ==========
+        function shareToTelegram() {
+            const now = new Date();
+            const newYearDate = new Date('January 1, 2026 00:00:00');
+            const timeDiff = newYearDate - now;
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            
+            const shareText = `🎄 Я готовлюсь к Новому 2026 году с помощью "Новогоднего органайзера"!\n\n` +
+                             `До праздника осталось: ${days} дней ${hours} часов\n` +
+                             `Мой прогресс подготовки: ${document.getElementById('progress-percent').textContent}\n\n` +
+                             `Присоединяйтесь!`;
+            
+            if (isTelegram && tg.shareMessage) {
+                tg.shareMessage({
+                    text: shareText,
+                    url: window.location.href
+                });
+            } else {
+                // Для браузера
+                const text = encodeURIComponent(shareText);
+                const url = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${text}`;
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        // ========== ИНИЦИАЛИЗАЦИЯ ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            // Инициализация Telegram
+            initTelegram();
+            
+            // Инициализация снежинок
+            initSnowflakes();
+            
+            // Инициализация списка дел
+            initializeTodos();
+            
+            // Обновление отображения имени пользователя
+            updateUserNameDisplay();
+            
+            // Запуск отсчета времени
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            // Запуск системы уведомлений
+            startNotificationSystem();
+            
+            // Обработчики событий
+            document.getElementById('add-todo-btn').addEventListener('click', addTodo);
+            
+            document.getElementById('new-todo').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addTodo();
+                }
+            });
+            
+            document.getElementById('save-name-btn').addEventListener('click', saveUserName);
+            
+            document.getElementById('user-name-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    saveUserName();
+                }
+            });
+            
+            document.getElementById('test-celebration').addEventListener('click', function() {
+                startNewYearCelebration();
+            });
+            
+            document.getElementById('celebration-close').addEventListener('click', function() {
+                stopNewYearCelebration();
+            });
+            
+            document.getElementById('test-notification').addEventListener('click', function() {
+                showNotification();
+            });
+            
+            document.getElementById('celebration-share').addEventListener('click', shareToTelegram);
+            
+            // Смена поздравлений в заголовке
+            const greetings = [
+                "Встретьте 2026 год во всеоружии!",
+                "Пусть все мечты сбудутся в новом году!",
+                "Желаем счастья и здоровья в 2026!",
+                "Пусть 2026 год принесет удачу!",
+                "Счастливого Нового 2026 года!",
+                "Пусть 2026 год будет полон радости!",
+                "Новый 2026 год — новые возможности!"
+            ];
+            
+            setInterval(() => {
+                const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+                const subtitle = document.getElementById('subtitle');
+                subtitle.textContent = randomGreeting;
+                
+                subtitle.style.transform = 'scale(1.05)';
+                subtitle.style.transition = 'transform 0.3s ease';
+                setTimeout(() => {
+                    subtitle.style.transform = 'scale(1)';
+                }, 300);
+            }, 15000);
+        });
+    </script>
+</body>
+</html>
